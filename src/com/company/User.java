@@ -61,7 +61,7 @@ public class User {
         this.key = crypt.keygen();
     }
 
-    public void say(String cmt, int id, User u[], int count){ //used to get the users answers in the main method
+    public void say(String cmt, int id, User u[], int count){ //used to get the users answers in the main method.
         System.out.println("User " + id + " says " + cmt);
         String encrypted = crypt.encrypt(cmt, u[id].getKey());
         System.out.println("This is encrypted to " + encrypted);
