@@ -4,55 +4,55 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); //new scanner system
         User superUser;
-        User users[] = new User[10];
-        int count = 1;
+        User users[] = new User[10]; //creating array
+        int count = 1; //used for while loop
 
         System.out.println("Welcome to a secure communication environment");
         System.out.println("By default the first user will be a super user");
-        superUser = new User();
-        users[0] = superUser;
+        superUser = new User(); //new object
+        users[0] = superUser; //using array
 
         System.out.println("Please create more users to communicate with (up to 10)");
 
-        String answer;
+        String answer; //used for while loop
 
         while(true){
             System.out.println("Create user " + (count+1) + "(y/n)");
-            answer = sc.next();
-            if(answer.equalsIgnoreCase("n")){
+            answer = sc.next(); //getting answer
+            if(answer.equalsIgnoreCase("n")){ //if they answer n, break
                 break;
-            }else if(count > 9){
+            }else if(count > 9){  //if count is more than 9, break
                 System.out.println("Sorry, user limit reached");
                 break;
             }
-            users[count] = new User();
+            users[count] = new User(); //new array
             users[0].grant(users[count]);
             count++;
         }
 
-        int userId, userId2;
+        int userId, userId2; //used for while loop
         String say;
 
         while(true){
-            System.out.println("Pick a user to be (0-" + count + ")");
-            userId = sc.nextInt();
+            System.out.println("Pick a user to be (0-" + count + ")"); //asking the user to pick a number between 1-2
+            userId = sc.nextInt(); //getting answer
             System.out.println("Say something, grant access(grant), revoke access(revoke), or exit: ");
             say = sc.nextLine();
-            say = sc.nextLine();
-            if(say.equalsIgnoreCase("grant")){
-                System.out.println("Grant who access to user " + userId + "?");
-                userId2 = sc.nextInt();
-                users[userId2].grant(users[userId]);
-            }else if(say.equalsIgnoreCase("revoke")){
+            say = sc.nextLine(); //getting their answer
+            if(say.equalsIgnoreCase("grant")){ //if they say grant, go through this
+                System.out.println("Grant who access to user " + userId + "?"); //asking who to give access to user 1
+                userId2 = sc.nextInt(); //getting answer
+                users[userId2].grant(users[userId]); //giving access
+            }else if(say.equalsIgnoreCase("revoke")){ //if they say revoke, go through this
                 System.out.println("Revoke who's access?");
-                userId2 = sc.nextInt();
-                users[userId2].revoke(users[userId]);
-            }else if(say.equalsIgnoreCase("exit")){
+                userId2 = sc.nextInt(); //getting answer
+                users[userId2].revoke(users[userId]); //revoking access
+            }else if(say.equalsIgnoreCase("exit")){ //if they say exit, break
                 break;
             }else{
-                users[userId].say(say, userId, users, count);
+                users[userId].say(say, userId, users, count); //copying the data
             }
         }
     }
