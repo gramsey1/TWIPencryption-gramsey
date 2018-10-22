@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Welcome to a secure communication environment");
         System.out.println("By default the first user will be a super user");
         superUser = new User(); //new object
-        users[0] = superUser; //using array
+        users[0] = superUser; //stating what the array of 0 will be while equalling the super user
 
         System.out.println("Please create more users to communicate with (up to 10)");
 
@@ -21,9 +21,9 @@ public class Main {
         while(true){
             System.out.println("Create user " + (count+1) + "(y/n)");
             answer = sc.next(); //getting answer
-            if(answer.equalsIgnoreCase("n")){ //if they answer n, break
+            if(answer.equalsIgnoreCase("n")){ //if answer equals 1, break
                 break;
-            }else if(count > 9){  //if count is more than 9, break
+            }else if(count > 9){  //break if less than 9
                 System.out.println("Sorry, user limit reached");
                 break;
             }
